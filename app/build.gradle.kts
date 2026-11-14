@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
+    // Kotlin serialization plugin for type safe routes and navigation arguments
+    kotlin("plugin.serialization") version "2.0.21"
 }
 
 android {
@@ -44,4 +46,22 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.ext.junit)
+
+
+    val roomVersion = "2.8.5"
+//    implementation(libs.room.runtime)
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+
+    // 2. ViewModel & LiveData (Kiến trúc MVVM)
+    val lifecycleVersion = "2.11.0"
+    implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-livedata:$lifecycleVersion")
+
+    // 3. Navigation Component (Chuyển đổi giữa các Fragment)
+    val navVersion = "2.10.2"
+    implementation("androidx.navigation:navigation-fragment:$navVersion")
+    implementation("androidx.navigation:navigation-ui:$navVersion")
+
+    implementation("com.github.bumptech.glide:glide:5.0.9")
 }

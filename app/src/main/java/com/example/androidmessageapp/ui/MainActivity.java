@@ -1,4 +1,4 @@
-package com.example.androidmessageapp;
+package com.example.androidmessageapp.ui;
 
 import android.os.Bundle;
 
@@ -6,9 +6,9 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.androidmessageapp.R;
 import com.example.androidmessageapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
