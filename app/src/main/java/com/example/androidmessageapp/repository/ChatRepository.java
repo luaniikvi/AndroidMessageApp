@@ -28,7 +28,6 @@ public class ChatRepository {
         allConversations = conversationDao.getAllConversations();
     }
 
-    // --- CÁC HÀM ĐỌC DỮ LIỆU (Trả về LiveData cho UI quan sát) ---
 
     public LiveData<List<ConversationEntity>> getAllConversations() {
         return allConversations;
@@ -42,27 +41,23 @@ public class ChatRepository {
         return messageDao.getMessagesByConversation(conversationId);
     }
 
-    // --- CÁC HÀM GHI DỮ LIỆU (Chạy trên luồng nền databaseWriteExecutor) ---
 
-    // Gửi tin nhắn mới (Lưu cục bộ trước - Offline First)
     public void sendMessage(String conversationId, String content, String type) {
         AppDatabase.databaseWriteExecutor.execute(() -> {
             long now = System.currentTimeMillis();
             String msgId = UUID.randomUUID().toString();
 
-            // 1. Tạo tin nhắn mới với trạng thái SENDING (sau này có server sẽ đổi thành SENT)
             MessageEntity newMessage = new MessageEntity(
                     msgId,
                     conversationId,
                     Constants.CURRENT_USER_ID,
                     type,
                     content,
-                    Constants.STATUS_SENT, // Tạm để SENT trong Giai đoạn 1 chạy offline
+                    Constants.STATUS_SENT,
                     now
             );
             messageDao.insert(newMessage);
 
-            // 2. Cập nhật dòng preview tin nhắn cuối ở màn hình danh sách bên ngoài
             String previewText = type.equals(Constants.MSG_TYPE_IMAGE) ? "[Hình ảnh]" : content;
             conversationDao.updateLastMessage(conversationId, previewText, now);
         });
@@ -73,8 +68,6 @@ public class ChatRepository {
             conversationDao.markAsRead(conversationId);
         });
     }
-
-    // --- BƠM DỮ LIỆU MẪU (Chạy 1 lần để có dữ liệu test giao diện) ---
     public void seedSampleData() {
         AppDatabase.databaseWriteExecutor.execute(() -> {
             long now = System.currentTimeMillis();
