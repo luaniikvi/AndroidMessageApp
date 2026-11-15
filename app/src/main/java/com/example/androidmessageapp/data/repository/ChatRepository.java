@@ -1,4 +1,4 @@
-package com.example.androidmessageapp.repository;
+package com.example.androidmessageapp.data.repository;
 
 import android.app.Application;
 

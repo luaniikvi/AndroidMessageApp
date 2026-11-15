@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface ConversationDao {
 
-    @Query("SELECT * FROM conversations ORDER BY updatedAt DESC")
+    @Query("SELECT * FROM conversations ORDER BY updated_at DESC")
     LiveData<List<ConversationEntity>> getAllConversations();
 
     @Query("SELECT * FROM conversations WHERE id = :conversationId LIMIT 1")
@@ -25,9 +25,9 @@ public interface ConversationDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(ConversationEntity conversation);
 
-    @Query("UPDATE conversations SET lastMessage = :lastMessage, updatedAt = :updatedAt WHERE id = :conversationId")
+    @Query("UPDATE conversations SET last_message = :lastMessage, updated_at = :updatedAt WHERE id = :conversationId")
     void updateLastMessage(String conversationId, String lastMessage, long updatedAt);
 
-    @Query("UPDATE conversations SET unreadCount = 0 WHERE id = :conversationId")
+    @Query("UPDATE conversations SET unread_count = 0 WHERE id = :conversationId")
     void markAsRead(String conversationId);
 }
