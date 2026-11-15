@@ -1,4 +1,6 @@
 package com.example.androidmessageapp.ui.conversations;
 
-public class ConversationsFragment {
+import androidx.fragment.app.Fragment;
+
+public class ConversationsFragment extends Fragment {
 }

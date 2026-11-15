@@ -1,6 +1,7 @@
 package com.example.androidmessageapp.data.local.entity;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -10,11 +11,17 @@ public class ConversationEntity {
     @NonNull
     private String id;
 
+    @ColumnInfo(name = "title")
     private String title;
+    @ColumnInfo(name = "avatar_url")
     private String avatarUrl;
+    @ColumnInfo(name = "last_message")
     private String lastMessage; // Nội dung tin nhắn cuối cùng để preview bên ngoài
+    @ColumnInfo(name = "updated_at")
     private long updatedAt;
+    @ColumnInfo(name = "unread_count")
     private int unreadCount;
+    @ColumnInfo(name = "is_online")
     private boolean isOnline;
 
     public ConversationEntity(@NonNull String id,

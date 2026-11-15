@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="12dp">
+
+    <!-- Ảnh đại diện -->
+    <ImageView
+        android:id="@+id/img_avatar"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Tên người chat / nhóm -->
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/img_avatar"
+        app:layout_constraintStart_toEndOf="@id/img_avatar"
+        app:layout_constraintEnd_toStartOf="@id/text_time"
+        tools:text="Minh Anh" />
+
+    <!-- Thời gian tin nhắn cuối -->
+    <TextView
+        android:id="@+id/text_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="?android:attr/textColorSecondary"
+        app:layout_constraintTop_toTopOf="@id/text_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="21:30" />
+
+    <!-- Nội dung tin nhắn cuối -->
+    <TextView
+        android:id="@+id/text_last_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="14sp"
+        android:textColor="?android:attr/textColorSecondary"
+        app:layout_constraintTop_toBottomOf="@id/text_title"
+        app:layout_constraintBottom_toBottomOf="@id/img_avatar"
+        app:layout_constraintStart_toStartOf="@id/text_title"
+        app:layout_constraintEnd_toStartOf="@id/text_unread_badge"
+        tools:text="Tối nay cậu làm xong phần UI chưa?" />
+
+    <!-- Huy hiệu số tin nhắn chưa đọc -->
+    <TextView
+        android:id="@+id/text_unread_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="22dp"
+        android:gravity="center"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="2dp"
+        android:background="@drawable/bg_bubble_sent"
+        android:textColor="@android:color/white"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/text_last_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">AndroidMessageApp</string>
+    <string name="app_name">ChatApp</string>
+    <string name="chat_title">Chat</string>
+    <string name="hint_type_message">Type a message…</string>
+    <string name="cd_send_message">Send message</string>
+    <string name="cd_back">Back</string>
 </resources>

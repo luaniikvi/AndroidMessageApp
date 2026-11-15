@@ -3,6 +3,7 @@ package com.example.androidmessageapp.ui;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -27,10 +28,19 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        BindKeys();
+        bindKeys();
     }
 
-    private void BindKeys()
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    private void bindKeys()
     {
         return;
     }
