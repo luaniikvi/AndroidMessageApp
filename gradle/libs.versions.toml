@@ -12,6 +12,7 @@ lombokVersion = "1.18.48"
 projectlombokLombok = "1.18.48"
 roomRuntime = "2.8.5"
 roomCompiler = "2.8.5"
+recyclerview = "1.4.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -26,6 +27,7 @@ projectlombok-lombok = { group = "org.projectlombok", name = "lombok", version.r
 org-projectlombok-lombok = { group = "org.projectlombok", name = "lombok", version.ref = "projectlombokLombok" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomRuntime" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
+recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AndroidMessageApp</string>
+    <string name="empty_string" />
+    <string name="message_input_hint">Aa</string>
+    <string name="btn_send_message_desc">Send message</string>
+
+    <string name="sample_content">This is a sample content.</string>
+    <string name="sample_time">12:34</string>
 </resources>
