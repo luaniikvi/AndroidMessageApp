@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">ChatApp</string>
-    <string name="chat_title">Trò chuyện</string>
-    <string name="hint_type_message">Nhập tin nhắn…</string>
-    <string name="cd_send_message">Gửi tin nhắn</string>
-    <string name="cd_back">Quay lại</string>
-</resources>
