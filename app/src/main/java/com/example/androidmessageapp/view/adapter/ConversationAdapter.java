@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.androidmessageapp.data.repository.ConversationRepository;
 import com.example.androidmessageapp.data.repository.MessageRepository;
 import com.example.androidmessageapp.databinding.ActivityMainBinding;
 import com.example.androidmessageapp.databinding.ConversationItemBinding;
@@ -41,9 +42,9 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
     public void onBindViewHolder(@NonNull ConversationViewHolder holder, int position) {
         ConversationModel currConversation = conversations.get(position);
         MessageRepository messageRepository = new MessageRepository(holder.binding.getRoot().getContext());
-/*        String lastMsg = messageRepository.getLastMessageByConversationId(currConversation.get);
+        String lastMsg = messageRepository.getLastMessageByConversationId(currConversation.getId());
         holder.binding.tvConversationName.setText(currConversation.getConversationName());
-        holder.binding.tvLastMessage.setText(currConversation);*/
+        holder.binding.tvLastMessage.setText(lastMsg);
     }
 
     @Override

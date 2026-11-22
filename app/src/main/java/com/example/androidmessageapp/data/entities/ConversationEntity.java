@@ -14,7 +14,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
+/*@NoArgsConstructor*/
 @Entity (
         tableName = "conversations"
 )
@@ -25,6 +25,11 @@ public class ConversationEntity {
 
     @ColumnInfo(name = "conversation_name")
     private String conversationName;
+
+    public ConversationEntity(){
+        this.id = UUID.randomUUID().toString();
+        this.conversationName = "";
+    }
 
     @Ignore
     public ConversationEntity(String conversationName) {
