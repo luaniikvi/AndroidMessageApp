@@ -1,8 +1,44 @@
 package com.example.androidmessageapp.data;
 
+import android.content.Context;
+
+import androidx.room.Database;
+import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-public abstract class AppDatabase extends RoomDatabase {
+import com.example.androidmessageapp.data.dao.ConversationDao;
+import com.example.androidmessageapp.data.dao.MessageDao;
+import com.example.androidmessageapp.data.dao.UserDao;
+import com.example.androidmessageapp.data.entities.ConversationEntity;
+import com.example.androidmessageapp.data.entities.ConversationMemberEntity;
+import com.example.androidmessageapp.data.entities.MessageEntity;
+import com.example.androidmessageapp.data.entities.UserEntity;
 
-    abstract 
+@Database(
+        entities = {
+                MessageEntity.class,
+                UserEntity.class,
+                ConversationEntity.class,
+                ConversationMemberEntity.class
+        },
+        version = 1
+)
+public abstract class AppDatabase extends RoomDatabase {
+    private static final String DATABASE_NAME = "app.db";
+    private static AppDatabase instance;
+
+    public static synchronized AppDatabase getInstance(Context context){
+        if (instance == null) {
+            instance = Room.databaseBuilder(
+                    context.getApplicationContext(),
+                    AppDatabase.class,
+                    DATABASE_NAME
+            ).allowMainThreadQueries().build();
+        }
+        return instance;
+    }
+
+    public abstract MessageDao messageDao();
+    public abstract UserDao userDao();
+    public abstract ConversationDao conversationDao();
 }

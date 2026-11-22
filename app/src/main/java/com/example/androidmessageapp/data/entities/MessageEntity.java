@@ -1,6 +1,7 @@
 package com.example.androidmessageapp.data.entities;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
@@ -24,21 +25,20 @@ import lombok.Setter;
                 @ForeignKey(
                         entity = ConversationEntity.class,
                         parentColumns = "id",
-                        childColumns = "conversationId",
+                        childColumns = "conversation_id",
                         onDelete = ForeignKey.CASCADE
                 ),
                 @ForeignKey(
-                        entity = UserEntitiy.class,
+                        entity = UserEntity.class,
                         parentColumns = "id",
-                        childColumns = "senderId",
+                        childColumns = "sender_id",
                         onDelete = ForeignKey.CASCADE
                 )
         },
         indices = {
-                @Index("senderId"),
-                @Index("conversationId")
+                @Index("sender_id"),
+                @Index("conversation_id")
         }
-
 )
 public class MessageEntity {
 
@@ -46,11 +46,15 @@ public class MessageEntity {
     @NonNull
     private String id;
     @NonNull
+    @ColumnInfo(name = "sender_id")
     private String senderId;
     @NonNull
+    @ColumnInfo(name = "conversation_id")
     private String conversationId;
     @NonNull
+    @ColumnInfo(name = "content")
     private String content;
+    @ColumnInfo(name = "sent_at")
     private long sentAt;
 
     @Ignore

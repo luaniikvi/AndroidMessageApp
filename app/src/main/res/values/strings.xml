@@ -6,4 +6,7 @@
 
     <string name="sample_content">This is a sample content.</string>
     <string name="sample_time">12:34</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="desc_toggle_visible_password">Toggle visible password</string>
 </resources>
