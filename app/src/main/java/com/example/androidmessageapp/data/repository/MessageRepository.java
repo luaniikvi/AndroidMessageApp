@@ -29,4 +29,8 @@ public class MessageRepository {
     public List<MessageModel> getMessages() {
         return MessageMapper.toModelList(messageDao.getAll());
     }
+
+    public String getLastMessageByConversationId(String conversationId) {
+        return messageDao.getLastMessageByConversationId(conversationId);
+    }
 }

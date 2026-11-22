@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.Index;
+import androidx.room.PrimaryKey;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,9 +16,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity (
         tableName = "conversation_members",
+        primaryKeys = {"conversation_id", "user_id"},
         foreignKeys = {
                 @ForeignKey(
                         entity = ConversationEntity.class,
@@ -44,4 +46,10 @@ public class ConversationMemberEntity {
     @NonNull
     @ColumnInfo(name = "user_id")
     private String userId;
+
+    @Ignore
+    public ConversationMemberEntity(@NonNull String conversationId, @NonNull String userId) {
+        this.conversationId = conversationId;
+        this.userId = userId;
+    }
 }

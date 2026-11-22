@@ -12,6 +12,7 @@ public final class ConversationMapper {
     public static ConversationModel toModel(ConversationEntity entity) {
         if (entity == null) return null;
         ConversationModel model = new ConversationModel();
+        model.setId(entity.getId());
         model.setConversationName(entity.getConversationName());
         return model;
     }

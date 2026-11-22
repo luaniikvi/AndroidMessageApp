@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class MessageModel {
+    private String id;
     private String senderId;
     private String content;
     private String formatTime;

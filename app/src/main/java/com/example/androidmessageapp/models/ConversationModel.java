@@ -9,5 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 
 public class ConversationModel {
+    private String id;
     private String conversationName;
 }

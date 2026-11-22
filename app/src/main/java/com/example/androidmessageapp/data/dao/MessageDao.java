@@ -22,4 +22,11 @@ public interface MessageDao {
 
     @Update
     public void update(MessageEntity messageEntity);
+
+    @Query("SELECT messages.content FROM messages "+
+            "WHERE messages.conversation_id=:conversationId "+
+            "ORDER BY messages.sent_at DESC " +
+            "LIMIT 1"
+    )
+    public String getLastMessageByConversationId(String conversationId);
 }

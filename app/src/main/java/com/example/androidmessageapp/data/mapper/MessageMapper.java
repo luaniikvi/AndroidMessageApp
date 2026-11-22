@@ -13,6 +13,7 @@ public final class MessageMapper {
     public static MessageModel toModel(MessageEntity entity) {
         if (entity == null) return null;
         MessageModel model = new MessageModel();
+        model.setId(entity.getId());
         model.setSenderId(entity.getSenderId());
         model.setContent(entity.getContent());
         model.setFormatTime(TimeFormatter.format(entity.getSentAt()));

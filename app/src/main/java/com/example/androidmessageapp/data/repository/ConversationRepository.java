@@ -32,4 +32,10 @@ public class ConversationRepository {
     public List<ConversationModel> getConversationsByUserId(String userId) {
         return ConversationMapper.toModelList(conversationDao.getConversationsByUserId(userId));
     }
+
+    public List<ConversationModel> getConversationsByEmail(String email) {
+        return ConversationMapper.toModelList(conversationDao.getConversationsByEmail(email));
+    }
+
+
 }

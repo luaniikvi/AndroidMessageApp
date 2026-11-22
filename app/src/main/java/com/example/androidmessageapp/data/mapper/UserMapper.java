@@ -12,7 +12,7 @@ public final class UserMapper {
     public static UserModel toModel(UserEntity userEntity) {
         if(userEntity == null) return null;
         UserModel userModel = new UserModel();
-
+        userModel.setId(userEntity.getId());
         userModel.setEmail(userEntity.getEmail());
         userModel.setName(userEntity.getName());
         return userModel;
