@@ -1,5 +1,6 @@
 package com.example.androidmessageapp.view.activities.message;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.Toast;
@@ -14,9 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.androidmessageapp.data.entities.MessageEntity;
 import com.example.androidmessageapp.data.repository.MessageRepository;
 import com.example.androidmessageapp.databinding.MessageActivityBinding;
+import com.example.androidmessageapp.models.MessageModel;
 import com.example.androidmessageapp.view.activities.BaseActivity;
 import com.example.androidmessageapp.view.adapter.MessageAdapter;
 
+import java.util.List;
 import java.util.UUID;
 
 public class MessageActivity extends BaseActivity {
@@ -26,10 +29,8 @@ public class MessageActivity extends BaseActivity {
 
     // TODO : change to real uuid
 
-    String myUUID = UUID.randomUUID().toString();
-    String id = myUUID;
-    String senderId = myUUID;
-    String conversationId = myUUID;
+    String currentUserId;
+    String conversationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,17 @@ public class MessageActivity extends BaseActivity {
         );
 
         setContentView(binding.getRoot());
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        if (bundle != null) {
+            currentUserId = bundle.getString("userId");
+            conversationId = bundle.getString("conversationId");
+        }
+        else {
+            Toast.makeText(this, "Missing bundle", Toast.LENGTH_SHORT).show();
+        }
+
 
         initRcv();
         bindingFunction();
@@ -63,10 +75,8 @@ public class MessageActivity extends BaseActivity {
             binding.etMessage.setText("");
 
 
-            // TODO: send to database
-
             MessageEntity newMessage = new MessageEntity(
-                    senderId,
+                    currentUserId,
                     conversationId,
                     msg
             );
@@ -82,8 +92,9 @@ public class MessageActivity extends BaseActivity {
         });
     }
 
-    // TODO:change to get by conversation_id
+
     private void loadMessages() {
-        messageAdapter.setMsgList(messageRepository.getMessages());
+        List<MessageModel> messageModelList = messageRepository.getMessages();
+        messageAdapter.setMsgList(messageModelList, currentUserId);
     }
 }

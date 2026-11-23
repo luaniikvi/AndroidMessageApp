@@ -1,6 +1,7 @@
 package com.example.androidmessageapp.view.adapter;
 
 import android.annotation.SuppressLint;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -12,17 +13,20 @@ import com.example.androidmessageapp.models.MessageModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
     private final List<MessageModel> msgList = new ArrayList<>();
+    private String currenUserId;
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setMsgList(List<MessageModel> newMsgList) {
+    public void setMsgList(List<MessageModel> newMsgList, String currenUserId) {
         this.msgList.clear();
         if (newMsgList != null) {
             this.msgList.addAll(newMsgList);
         }
         notifyDataSetChanged();
+        this.currenUserId = currenUserId;
     }
 
     public void addMsg(MessageModel newMsg) {
@@ -44,6 +48,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     @Override
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
         MessageModel currentMsg = msgList.get(position);
+        if (Objects.equals(currentMsg.getSenderId(), currenUserId)){
+            holder.binding.msgItem.setGravity(Gravity.END);
+        }
         holder.binding.tvMsgContent.setText(currentMsg.getContent());
         holder.binding.tvMsgTime.setText(currentMsg.getFormatTime());
     }

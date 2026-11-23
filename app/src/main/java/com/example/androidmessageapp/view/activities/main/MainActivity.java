@@ -9,13 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.androidmessageapp.data.repository.ConversationRepository;
-import com.example.androidmessageapp.data.repository.UserRepository;
 import com.example.androidmessageapp.databinding.ActivityMainBinding;
 import com.example.androidmessageapp.models.ConversationModel;
 import com.example.androidmessageapp.view.activities.addfriend.AddFriendActivity;
 import com.example.androidmessageapp.view.activities.BaseActivity;
 import com.example.androidmessageapp.view.adapter.ConversationAdapter;
-import com.example.androidmessageapp.view.adapter.MessageAdapter;
 
 import java.util.List;
 
@@ -65,6 +63,6 @@ public class MainActivity extends BaseActivity {
 
     public void loadData(){
         List<ConversationModel> conversationsList = conversationRepository.getConversationsByUserId(userId);
-        conversationAdapter.setConversationsList(conversationsList);
+        conversationAdapter.setConversationsList(conversationsList, userId);
     }
 }
