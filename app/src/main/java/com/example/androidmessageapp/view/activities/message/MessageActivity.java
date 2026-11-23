@@ -6,10 +6,6 @@ import android.view.LayoutInflater;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.androidmessageapp.data.entities.MessageEntity;
@@ -20,7 +16,6 @@ import com.example.androidmessageapp.view.activities.BaseActivity;
 import com.example.androidmessageapp.view.adapter.MessageAdapter;
 
 import java.util.List;
-import java.util.UUID;
 
 public class MessageActivity extends BaseActivity {
     MessageActivityBinding binding;
@@ -56,7 +51,12 @@ public class MessageActivity extends BaseActivity {
 
         initRcv();
         bindingFunction();
-        loadMessages();
+    }
+    protected void onResume() {
+        super.onResume();
+        if (currentUserId != null && !currentUserId.isEmpty()) {
+            loadMessages();
+        }
     }
 
 
