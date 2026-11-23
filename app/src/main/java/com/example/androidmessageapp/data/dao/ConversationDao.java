@@ -33,5 +33,9 @@ public interface ConversationDao {
             "WHERE users.email=:email")
     public List<ConversationEntity> getConversationsByEmail(String email);
 
-
+    @Query("SELECT u.name FROM users u " +
+            "INNER JOIN conversation_members cm ON u.id = cm.user_id " +
+            "WHERE cm.conversation_id = :conversationId AND cm.user_id != :currentUserId " +
+            "LIMIT 1")
+    String getOtherMemberName(String conversationId, String currentUserId);
 }

@@ -2,15 +2,12 @@ package com.example.androidmessageapp.view.adapter;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.androidmessageapp.data.repository.ConversationRepository;
-import com.example.androidmessageapp.data.repository.MessageRepository;
-import com.example.androidmessageapp.databinding.ActivityMainBinding;
+
 import com.example.androidmessageapp.databinding.ConversationItemBinding;
 import com.example.androidmessageapp.models.ConversationModel;
 
@@ -41,10 +38,9 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
     @Override
     public void onBindViewHolder(@NonNull ConversationViewHolder holder, int position) {
         ConversationModel currConversation = conversations.get(position);
-        MessageRepository messageRepository = new MessageRepository(holder.binding.getRoot().getContext());
-        String lastMsg = messageRepository.getLastMessageByConversationId(currConversation.getId());
+
         holder.binding.tvConversationName.setText(currConversation.getConversationName());
-        holder.binding.tvLastMessage.setText(lastMsg);
+        holder.binding.tvLastMessage.setText(currConversation.getLastMessage());
     }
 
     @Override

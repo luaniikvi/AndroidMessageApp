@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.example.androidmessageapp.data.entities.ConversationEntity;
 import com.example.androidmessageapp.data.entities.ConversationMemberEntity;
+import com.example.androidmessageapp.data.enums.ConversationType;
 import com.example.androidmessageapp.data.repository.ConversationRepository;
 import com.example.androidmessageapp.data.repository.UserRepository;
 import com.example.androidmessageapp.databinding.AddfriendAcitivityBinding;
@@ -63,6 +64,7 @@ public class AddFriendActivity extends BaseActivity {
 
                 //
                 ConversationEntity newConversation = new ConversationEntity();
+                newConversation.setType(ConversationType.DIRECT.getValue());
                 conversationRepository.insertConversation(newConversation);
                 ConversationMemberEntity senderMember = new ConversationMemberEntity(
                         newConversation.getId(),

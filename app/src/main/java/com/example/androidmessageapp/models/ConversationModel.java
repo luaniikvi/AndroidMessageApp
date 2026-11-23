@@ -11,4 +11,7 @@ import lombok.Setter;
 public class ConversationModel {
     private String id;
     private String conversationName;
+    private String type;
+    private String lastMessage;
+
 }

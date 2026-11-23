@@ -14,6 +14,7 @@ public final class ConversationMapper {
         ConversationModel model = new ConversationModel();
         model.setId(entity.getId());
         model.setConversationName(entity.getConversationName());
+        model.setType(entity.getType());
         return model;
     }
 
